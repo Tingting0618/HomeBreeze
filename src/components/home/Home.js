@@ -1,7 +1,6 @@
 import React from "react"
 import "./Home.css"
-import {Card} from 'react-bootstrap';
-import {Button} from 'react-bootstrap';
+import {Card,Button} from 'react-bootstrap';
 
 
 // export const Home = () => (
@@ -13,14 +12,14 @@ import {Button} from 'react-bootstrap';
 export const Home = () => (
 
 <Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg" />
+  <Card.Img variant="top" src="https://www.cottagesgardens.com/content/uploads/data-import/0cf36f3e/Judy-Garland-Malibu-Beach-House-Sells-Wizard-of-Oz-Fan-3-5M-living-room.jpg" />
   <Card.Body>
-    <Card.Title href="#">Card Title</Card.Title>
+    <Card.Title href="#">Beautiful 3b3b house</Card.Title>
     <Card.Text>
       Some quick example text to build on the card title and make up the bulk of
       the card's content.
     </Card.Text>
-    <Button variant="primary">Contact Agent</Button>
+    <Button variant="secondary">Contact Agent</Button>
   </Card.Body>
 </Card>
 )
