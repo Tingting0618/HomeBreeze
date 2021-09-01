@@ -1,6 +1,6 @@
 # Home Breeze
 
-This project is to build a web application that helps people to find their next home and then book home services (e.g., repair, cleaning, etc.).
+This project is to build a web application that helps people to find their next home and book home services (e.g., repair, cleaning, etc.).
 
 
 ## Learn More
