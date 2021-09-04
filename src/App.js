@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react"
-import { NavBar } from "./components/nav/NavBar"
+import { NavBar_main } from "./components/nav/NavBar"
 import { ApplicationViews } from "./components/ApplicationView"
 
 
@@ -9,7 +9,7 @@ function App() {
     <>
       <h2>Home Breeze</h2>
       <small>Find your next home, here.</small>
-      <NavBar />
+      <NavBar_main />
       <ApplicationViews />
     </>
   );
