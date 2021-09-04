@@ -1,8 +1,7 @@
 import './App.css';
-import { Button, InputGroup, FormControl } from 'react-bootstrap';
 import React from "react"
-import { HomeList } from "./components/home/HomeList"
-import { HomeProvider } from "./components/home/HomeProvider"
+import { NavBar } from "./components/nav/NavBar"
+import { ApplicationViews } from "./components/ApplicationView"
 
 
 function App() {
@@ -10,23 +9,16 @@ function App() {
     <>
       <h2>Home Breeze</h2>
       <small>Find your next home, here.</small>
-
-      <InputGroup className="mb-3">
-        <FormControl
-          placeholder="City, Neighborhood, Zipcode"
-          aria-label="City, Neighborhood, Zipcode"
-          aria-describedby="basic-addon2"
-        />
-        <Button variant="dark">Search</Button>
-      </InputGroup>
-
-      <article className="homes">
-        <HomeProvider>
-          <HomeList />
-        </HomeProvider>
-      </article>
-
+      <NavBar />
+      <ApplicationViews />
     </>
   );
 }
 export default App;
+
+
+{/* <article className="homes">
+        <HomeProvider>
+          <HomeList />
+        </HomeProvider>
+      </article> */}
