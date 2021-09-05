@@ -3,6 +3,13 @@ import { Button, Navbar, Container, Nav } from 'react-bootstrap'
 
 
 export const NavBar_main = (props) => {
+    const  logout = () => {
+        sessionStorage.clear();
+        window.location.href = '/';
+      }
+
+
+
     return (
         <>
             <Navbar bg="light" variant="light">
@@ -11,10 +18,10 @@ export const NavBar_main = (props) => {
                     <Nav className="me-auto">
                         <Nav.Link href="/">Buy</Nav.Link>
                         <Nav.Link href="/sell" >Sell</Nav.Link>
-                        <Nav.Link href="/rent">Rent</Nav.Link>
-                        <Nav.Link href="/service">Service</Nav.Link>
+                        {/* <Nav.Link href="/rent">Rent</Nav.Link>
+                        <Nav.Link href="/service">Service</Nav.Link> */}
                         <Nav.Link href="/mylistings">My Listings</Nav.Link>
-                        <Button className="navbar__link" variant="light">Log Out</Button>
+                        <Button className="navbar__link" variant="light" onClick={logout}>Log Out</Button>
                     </Nav>
                 </Container>
             </Navbar>
