@@ -1,4 +1,4 @@
-import React, {useState } from "react"
+import React, { useState } from "react"
 import { Link, useHistory } from "react-router-dom";
 import "./Login.css"
 
@@ -31,6 +31,7 @@ export const Login = () => {
                 if (exists) {
                     // The user id is saved under the key homebreeze_user in session Storage. Change below if needed!
                     sessionStorage.setItem("homebreeze_user", exists.id)
+                    sessionStorage.setItem("homebreeze_user_email", exists.email)
                     history.push("/")
                 } else {
                     setExistDialog(true)

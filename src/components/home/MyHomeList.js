@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { HomeContext } from "./HomeProvider"
-import { Card, Button, InputGroup, FormControl } from 'react-bootstrap'
-import { useHistory } from 'react-router-dom'
+import { Card, Button } from 'react-bootstrap'
+import { useHistory, Link } from 'react-router-dom'
 import "./Home.css"
 
 export const MyHomeList = () => {
@@ -14,30 +14,20 @@ export const MyHomeList = () => {
     }, [])
 
     const history = useHistory()
-    const myhomes = homes.filter(home => home.userId == parseInt(sessionStorage.getItem("homebreeze_user")))
-
+    const currentUserId = parseInt(sessionStorage.getItem("homebreeze_user"))
+    const currentUserEmail = sessionStorage.getItem("homebreeze_user_email")
+    const myhomes = homes.filter(home => currentUserId == home.userId || currentUserEmail == home.aEmail)
 
     return (
         <>
-            <InputGroup className="mb-3">
-                <FormControl
-                    placeholder="City, Neighborhood, Address, ZIP, Agent, MLS #"
-                    aria-label="City, Neighborhood, Address, ZIP, Agent, MLS #"
-                    aria-describedby="basic-addon2"
-                />
-                <Button variant="dark">Search</Button>
-            </InputGroup>
-
             <button onClick={
                 () => history.push("/homes/create")
             }>
-                Sell My Home
+                Sell New Homes
             </button>
 
             <section className="homes">
                 {
-
-
                     myhomes.map(home => {
                         const handleDelete = () => {
                             deleteHome(home.id)
@@ -50,14 +40,17 @@ export const MyHomeList = () => {
                                 <Card.Img variant="top" src={home.imageUrl} />
                                 <Card.Body>
                                     <Card.Title href="#">{home.address1}</Card.Title>
+                                    <Card.Subtitle className="mb-2 text-muted">Listed by: {home.user.name}</Card.Subtitle>
                                     <Card.Text>
                                         {home.desc}
                                     </Card.Text>
+                                    <Link to={`/homes/detail/${home.id}`}> <Button variant="secondary" >See Details</Button></Link>
                                     <Button variant="secondary"
                                         onClick={() => {
                                             history.push(`/homes/edit/${home.id}`)
                                         }}>Edit</Button>
                                     <Button variant="danger" onClick={handleDelete}>Delete</Button>
+
                                 </Card.Body>
                             </Card>
                         )

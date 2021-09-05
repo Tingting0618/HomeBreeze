@@ -9,8 +9,8 @@ export const HomeProvider = (props) => {
 
     const getHomes = () => {
         return fetch("http://localhost:8088/homes?_expand=user")
-        .then(res => res.json())
-        .then(setHomes)
+            .then(res => res.json())
+            .then(setHomes)
     }
 
     const addHome = homeObj => {
@@ -21,7 +21,7 @@ export const HomeProvider = (props) => {
             },
             body: JSON.stringify(homeObj)
         })
-        .then(getHomes)
+            .then(getHomes)
     }
     const deleteHome = homeId => {
         return fetch(`http://localhost:8088/homes/${homeId}`, {
@@ -32,24 +32,24 @@ export const HomeProvider = (props) => {
 
     const updateHome = home => {
         return fetch(`http://localhost:8088/homes/${home.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(home)
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(home)
         })
-          .then(getHomes)
-      }
+            .then(getHomes)
+    }
 
     const getHomeById = (homeId) => {
-        return fetch(`http://localhost:8088/homes/${homeId}`)
-        .then(res => res.json())
+        return fetch(`http://localhost:8088/homes/${homeId}?_expand=user`)
+            .then(res => res.json())
     }
 
 
     return (
         <HomeContext.Provider value={{
-            homes, getHomes, addHome,deleteHome,updateHome,getHomeById
+            homes, getHomes, addHome, deleteHome, updateHome, getHomeById
         }}>
             {props.children}
         </HomeContext.Provider>

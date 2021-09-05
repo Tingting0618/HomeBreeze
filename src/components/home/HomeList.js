@@ -1,7 +1,7 @@
-import React, { useContext, useEffect} from "react"
+import React, { useContext, useEffect } from "react"
 import { HomeContext } from "./HomeProvider"
 import { Card, Button, InputGroup, FormControl, Modal } from 'react-bootstrap'
-import {Link, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import "./Home.css"
 
 
@@ -17,6 +17,7 @@ export const HomeList = () => {
 
   return (
     <>
+      <small>Find your next home, here.</small>
       <InputGroup className="mb-3">
         <FormControl
           placeholder="City, Neighborhood, Address, ZIP, Agent, MLS #"
@@ -25,6 +26,7 @@ export const HomeList = () => {
         />
         <Button variant="dark">Search</Button>
       </InputGroup>
+
 
       <button onClick={
         () => history.push("/homes/create")
@@ -37,19 +39,20 @@ export const HomeList = () => {
           homes.map(home => {
             return (
               <>
-              
                 <Card style={{ width: '18rem' }}>
                   <Card.Img variant="top" src={home.imageUrl} />
                   <Card.Body>
                     <Card.Title href="#">{home.address1}</Card.Title>
-                   
+                    <Card.Subtitle className="mb-2 text-muted">${home.price}, {home.bed} beds, {home.bath} baths</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">{home.sqft} sqft, {home.land} Acers</Card.Subtitle>
+
                     <Card.Text>
                       {home.desc}
                     </Card.Text>
                     <Link to={`/homes/detail/${home.id}`}> <Button variant="secondary" >See Details</Button></Link>
                   </Card.Body>
                 </Card>
-                
+
               </>
             )
           })

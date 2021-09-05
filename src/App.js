@@ -15,8 +15,6 @@ function App() {
           if (sessionStorage.getItem("homebreeze_user")) {
             return (
               <>
-                <h2>Home Breeze</h2>
-                <small>Find your next home, here.</small>
                 <NavBar_main />
                 <ApplicationViews />
               </>
@@ -37,10 +35,3 @@ function App() {
   );
 }
 export default App;
-
-
-{/* <article className="homes">
-        <HomeProvider>
-          <HomeList />
-        </HomeProvider>
-      </article> */}
