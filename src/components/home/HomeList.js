@@ -19,7 +19,7 @@ export const HomeList = () => {
     <>
       <div className="page" >
         <h3>
-          Our Exclusive Listings <Badge bg="secondary">New</Badge>
+          Our Exclusive Listings <Badge bg="success">New</Badge>
         </h3>
         <div style={{ display: "flex" }}>
           <Dropdown style={{ marginLeft: "auto" }}>
