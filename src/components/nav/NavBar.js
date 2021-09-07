@@ -14,7 +14,7 @@ export const NavBar_main = (props) => {
                 <Container>
                     <Navbar.Brand href="/">HomeBreeze</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="/">Buy</Nav.Link>
+                        <Nav.Link href="/buy">Buy</Nav.Link>
                         <Nav.Link href="/sell" >Sell</Nav.Link>
                         {/* <Nav.Link href="/rent">Rent</Nav.Link>
                         <Nav.Link href="/service">Service</Nav.Link> */}

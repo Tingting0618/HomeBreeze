@@ -20,43 +20,51 @@ export const MyHomeList = () => {
 
     return (
         <>
-            <button onClick={
-                () => history.push("/homes/create")
-            }>
-                Sell New Homes
-            </button>
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-secondary pull-right"
+                        style={{ margin: '0.8rem 3rem -0.8rem 0rem' }}
+                        onClick={
+                            () => history.push("/homes/create")}
+                    > Sell New Homes</button>
+                </div>
+            </div>
 
-            <section className="homes">
-                {
-                    myhomes.map(home => {
-                        const handleDelete = () => {
-                            deleteHome(home.id)
-                                .then(() => {
-                                    history.push("/mylistings")
-                                })
-                        }
-                        return (
-                            <Card style={{ width: '18rem' }}>
-                                <Card.Img variant="top" src={home.imageUrl} />
-                                <Card.Body>
-                                    <Card.Title href="#">{home.address1}</Card.Title>
-                                    <Card.Subtitle className="mb-2 text-muted">Listed by: {home.user.name}</Card.Subtitle>
-                                    <Card.Text>
-                                        {home.desc}
-                                    </Card.Text>
-                                    <Link to={`/homes/detail/${home.id}`}> <Button variant="secondary" >See Details</Button></Link>
-                                    <Button variant="secondary"
-                                        onClick={() => {
-                                            history.push(`/homes/edit/${home.id}`)
-                                        }}>Edit</Button>
-                                    <Button variant="danger" onClick={handleDelete}>Delete</Button>
+            <div className="page" >
+                <section className="homes">
+                    {
+                        myhomes.map(home => {
+                            const handleDelete = () => {
+                                deleteHome(home.id)
+                                    .then(() => {
+                                        history.push("/mylistings")
+                                    })
+                            }
+                            return (
+                                <Card style={{ width: '18rem', margin: '0.5rem' }}>
+                                    <Card.Img variant="top" src={home.imageUrl} />
+                                    <Card.Body>
+                                        <Card.Title href="#">{home.address1}</Card.Title>
+                                        <Card.Subtitle className="mb-2 text-muted">Listed by: {home.user.name}</Card.Subtitle>
+                                        <Card.Text>
+                                            {home.desc.substring(0, 90)}...
+                                        </Card.Text>
+                                        <Link to={`/homes/detail/${home.id}`}> <Button variant="secondary" >See Details</Button></Link>
+                                        <Button variant="secondary"
+                                            onClick={() => {
+                                                history.push(`/homes/edit/${home.id}`)
+                                            }}>Edit</Button>
+                                        <Button variant="danger" onClick={handleDelete}>Delete</Button>
 
-                                </Card.Body>
-                            </Card>
-                        )
-                    })
-                }
-            </section>
+                                    </Card.Body>
+                                </Card>
+                            )
+                        })
+                    }
+                </section>
+            </div>
 
         </>
     )

@@ -1,12 +1,20 @@
 .homes {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    margin: auto;
+    justify-content: space-evenly;
+
 }
 
 .home {
     flex-basis: 28%;
-    margin: 1em;
-    padding: 1em;
+    margin: 1rem;
+    padding: 1rem;
     border: 1px solid goldenrod;
+}
+
+.page{
+    margin: 1.5rem;
+    padding: 0rem;
+    /* border: 1px solid goldenrod; */
 }

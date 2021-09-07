@@ -5,14 +5,17 @@ import { MyHomeList } from "./home/MyHomeList"
 import { HomeList } from "./home/HomeList"
 import { HomeForm } from "./home/HomeForm"
 import { HomeDetail } from "./home/HomeDetails"
+import { SearchBar } from './nav/SearchBar';
 
 export const ApplicationViews = () => {
     return (
         <>
             <HomeProvider>
                 <Route exact path="/">
+                    <SearchBar />
                     <HomeList />
                 </Route>
+
                 <Route path="/buy">
                     <HomeList />
                 </Route>

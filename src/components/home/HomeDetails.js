@@ -17,7 +17,7 @@ export const HomeDetail = () => {
     }, [])
 
     return (
-        <section>
+        <section className="container" style={{ margin: "2rem 0rem 1rem 2rem" }}>
             <h4 >Home</h4>
             <ListGroup variant="flush">
                 <ListGroup.Item>Price: {home.price}</ListGroup.Item>
@@ -25,14 +25,14 @@ export const HomeDetail = () => {
                 <ListGroup.Item>Sqft: {home.sqft} Sqft</ListGroup.Item>
                 <ListGroup.Item>Land: {home.land} Acer</ListGroup.Item>
             </ListGroup>
-
+            <br />
             <h4 >Agent</h4>
             <ListGroup variant="flush">
                 <ListGroup.Item>{home.aName}</ListGroup.Item>
                 <ListGroup.Item>Email: {home.aEmail}</ListGroup.Item>
                 <ListGroup.Item>Tel: {home.aPhone}</ListGroup.Item>
             </ListGroup>
-
+            <br />
             <h4 >Location</h4>
             <ListGroup variant="flush">
                 <ListGroup.Item>{home.address1}, {home.city}, {home.state} </ListGroup.Item>
