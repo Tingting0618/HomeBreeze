@@ -24,8 +24,8 @@ export const MyHomeList = () => {
                 <div class="col">
                 </div>
                 <div class="col-auto">
-                    <button class="btn btn-secondary pull-right"
-                        style={{ margin: '0.8rem 3rem -0.8rem 0rem' }}
+                    <button class="btn btn-dark pull-right"
+                        style={{ margin: '0.8rem 3rem -0.8rem 0rem' ,fontWeight: "bold"}}
                         onClick={
                             () => history.push("/homes/create")}
                     > Sell New Homes</button>

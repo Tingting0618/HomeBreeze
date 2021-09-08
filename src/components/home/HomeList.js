@@ -41,7 +41,7 @@ export const HomeList = () => {
             homes.map(home => {
               return (
                 <>
-                  <Card style={{ width: '18rem' , margin:'0.3rem'}}>
+                  <Card key={home.id} style={{ width: '18rem', margin: '0.3rem' }}>
                     <Card.Img variant="top" src={home.imageUrl} />
                     <Card.Body>
                       <Card.Title href="#">{home.address1}</Card.Title>
@@ -49,7 +49,7 @@ export const HomeList = () => {
                       <Card.Subtitle className="mb-2 text-muted">{home.sqft} sqft, {home.land} Acers</Card.Subtitle>
 
                       <Card.Text>
-                        {home.desc.substring(0,90)}...
+                        {home.desc.substring(0, 90)}...
                       </Card.Text>
                       <Link to={`/homes/detail/${home.id}`}> <Button variant="secondary" >See Details</Button></Link>
                     </Card.Body>

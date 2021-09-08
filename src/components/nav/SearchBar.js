@@ -8,7 +8,10 @@ export const SearchBar = () => {
 
             <Card className=" bg-dark text-white text-center align-middle">
 
-                <Card.Img src="https://www.compass.com/ucfe-assets/homepage/homepage-v1.24.1/assets/hero_tablet2x_res.jpeg" alt="Card image" responsive />
+                <Card.Img src="https://www.compass.com/ucfe-assets/homepage/homepage-v1.24.1/assets/hero_tablet2x_res.jpeg" 
+                alt="Card image" 
+                style={{hight: "90%"}}
+                responsive />
 
 
                 <Card.ImgOverlay>

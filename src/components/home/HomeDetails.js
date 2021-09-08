@@ -6,15 +6,17 @@ import { ListGroup } from 'react-bootstrap'
 
 
 export const HomeDetail = () => {
-    const { homes } = useContext(HomeContext)
+    const { homes,getHomes } = useContext(HomeContext)
     const [home, setHome] = useState({})
     const { homeId } = useParams();
     const thehomeId = parseInt(homeId)
-
+ 
     useEffect(() => {
-        const thisHome = homes.find(a => a.id === thehomeId)
-        setHome(thisHome)
-    }, [])
+        getHomes().then(() => {
+            const thisHome = homes.find(a => a.id === thehomeId ) || {}
+            setHome(thisHome)
+        })
+    }, [homes])
 
     return (
         <section className="container" style={{ margin: "2rem 0rem 1rem 2rem" }}>
@@ -38,8 +40,6 @@ export const HomeDetail = () => {
                 <ListGroup.Item>{home.address1}, {home.city}, {home.state} </ListGroup.Item>
                 <ListGroup.Item>{home.desc}</ListGroup.Item>
             </ListGroup>
-
-
         </section>
     )
 }
