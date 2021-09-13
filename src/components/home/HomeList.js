@@ -2,7 +2,10 @@ import React, { useContext, useEffect } from "react"
 import { HomeContext } from "./HomeProvider"
 import { Card, Button, Badge, Dropdown, Container } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
+import Fuse from 'fuse.js'
+import { useParams } from "react-router-dom"
 import "./Home.css"
+
 
 
 export const HomeList = () => {
@@ -12,6 +15,16 @@ export const HomeList = () => {
   useEffect(() => {
     getHomes()
   }, [])
+
+  const homesList = Object.values(homes)
+  // // 2. Set up the Fuse instance
+  // const fuse = new Fuse(homes, {
+  //   keys: ['city', 'address1', 'state','zipcode','desc']
+  // })
+  // 
+  // // 3. Now search!
+  // fuse.search(searchKey)
+  // console.log(fuse.search(searchKey))
 
   const history = useHistory()
 
@@ -37,8 +50,9 @@ export const HomeList = () => {
         </div>
         <br />
         <section className="homes">
+        
           {
-            homes.map(home => {
+            homesList.map(home => {
               return (
                 <>
                   <Card key={home.id} style={{ width: '18rem', margin: '0.3rem' }}>

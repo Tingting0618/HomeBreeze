@@ -1,7 +1,20 @@
-import React from "react"
+import React,{useState} from "react"
 import { Card, Button, InputGroup, FormControl } from 'react-bootstrap'
+import { useHistory} from 'react-router-dom'
+
 
 export const SearchBar = () => {
+    const [searchKey, setsearchKey] = useState(" ")
+
+    const handleSearchControlledInputChange = (event) => {
+        setsearchKey(event.target.value)
+    }
+    const history = useHistory()
+    const handleClickSubmitSearch = () => {
+        console.log(searchKey)
+        history.push(`/buy?search=${searchKey}`)
+    }
+
 
     return (
         <>
@@ -31,8 +44,14 @@ export const SearchBar = () => {
                                 placeholder="City, Neighborhood, Address, ZIP, Agent, MLS #"
                                 aria-label="City, Neighborhood, Address, ZIP, Agent, MLS #"
                                 aria-describedby="basic-addon2"
+                                onChange={handleSearchControlledInputChange}
                             />
-                            <Button variant="dark" style={{fontWeight: "bold"}}>Search</Button>
+                            <Button variant="dark" 
+                            style={{fontWeight: "bold"}}
+                            onClick={event => {
+                                event.preventDefault()
+                                handleClickSubmitSearch()
+                            }}>Search</Button>
                         </InputGroup>
                     </div>
                 </Card.ImgOverlay>

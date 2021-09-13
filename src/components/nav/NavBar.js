@@ -1,13 +1,16 @@
 import React from "react"
 import { Button, Navbar, Container, Nav } from 'react-bootstrap'
-
+import { googleAuth} from "../helpers/googleAuth";
+// import {
+//     signOut
+//   } from "firebase/auth";
 
 export const NavBar_main = (props) => {
     const  logout = () => {
         sessionStorage.clear();
         window.location.href = '/';
       }
-
+  
     return (
         <>
             <Navbar bg="light" variant="light">
@@ -19,7 +22,7 @@ export const NavBar_main = (props) => {
                         {/* <Nav.Link href="/rent">Rent</Nav.Link>
                         <Nav.Link href="/service">Service</Nav.Link> */}
                         <Nav.Link href="/mylistings">My Listings</Nav.Link>
-                        <Button className="navbar__link" variant="light" onClick={logout}>Log Out</Button>
+                        <Button className="navbar__link" variant="light" onClick={() => googleAuth.signOut()}>Log Out</Button>
                     </Nav>
                 </Container>
             </Navbar>

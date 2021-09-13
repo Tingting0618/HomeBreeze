@@ -12,10 +12,12 @@ export const MyHomeList = () => {
     useEffect(() => {
         getHomes()
     }, [])
-
     const history = useHistory()
-    const currentUserId = parseInt(sessionStorage.getItem("homebreeze_user"))
+    const currentUserId = sessionStorage.getItem("homebreeze_user")
     const currentUserEmail = sessionStorage.getItem("homebreeze_user_email")
+    // const currentUserEmail = user.email
+    
+    // const homesList = Object.values(homes)
     const myhomes = homes.filter(home => currentUserId == home.userId || currentUserEmail == home.aEmail)
 
     return (
@@ -43,11 +45,11 @@ export const MyHomeList = () => {
                                     })
                             }
                             return (
-                                <Card style={{ width: '18rem', margin: '0.5rem' }}>
+                                <Card key={home.id} style={{ width: '18rem', margin: '0.5rem' }}>
                                     <Card.Img variant="top" src={home.imageUrl} />
                                     <Card.Body>
                                         <Card.Title href="#">{home.address1}</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">Listed by: {home.user.name}</Card.Subtitle>
+                                        <Card.Subtitle className="mb-2 text-muted">Listed by: {home.userId}</Card.Subtitle>
                                         <Card.Text>
                                             {home.desc.substring(0, 90)}...
                                         </Card.Text>

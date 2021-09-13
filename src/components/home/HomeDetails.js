@@ -9,10 +9,12 @@ export const HomeDetail = () => {
     const { homes,getHomes } = useContext(HomeContext)
     const [home, setHome] = useState({})
     const { homeId } = useParams();
-    const thehomeId = parseInt(homeId)
+    const thehomeId =parseInt(homeId)
  
+    
     useEffect(() => {
         getHomes().then(() => {
+            // const homesList = Object.values(homes)
             const thisHome = homes.find(a => a.id === thehomeId ) || {}
             setHome(thisHome)
         })

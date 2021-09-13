@@ -26,7 +26,7 @@ export const HomeForm = () => {
         if (homeId) {
             updateHome({
                 id: home.id,
-                userId: parseInt(sessionStorage.getItem("homebreeze_user")),
+                userId: sessionStorage.getItem("homebreeze_user"),
                 aName: home.aName,
                 aEmail: home.aEmail,
                 aPhone: home.aPhone,
@@ -45,7 +45,7 @@ export const HomeForm = () => {
             }).then(() => history.push(`/mylistings`))
         } else {
             addHome({
-                userId: parseInt(sessionStorage.getItem("homebreeze_user")),
+                userId: sessionStorage.getItem("homebreeze_user"),
                 aName: home.aName,
                 aEmail: home.aEmail,
                 aPhone: home.aPhone,

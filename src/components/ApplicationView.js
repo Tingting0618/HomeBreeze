@@ -6,10 +6,13 @@ import { HomeList } from "./home/HomeList"
 import { HomeForm } from "./home/HomeForm"
 import { HomeDetail } from "./home/HomeDetails"
 import { SearchBar } from './nav/SearchBar';
+import { NavBar_main } from "./nav/NavBar"
 
 export const ApplicationViews = () => {
     return (
         <>
+            <NavBar_main />
+
             <HomeProvider>
                 <Route exact path="/">
                     <SearchBar />
@@ -40,8 +43,6 @@ export const ApplicationViews = () => {
                     <HomeDetail />
                 </Route>
             </HomeProvider>
-
-
         </>
     )
 }
