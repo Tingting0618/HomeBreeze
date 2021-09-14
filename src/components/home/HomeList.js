@@ -1,8 +1,13 @@
 import React, { useContext, useEffect } from "react"
 import { HomeContext } from "./HomeProvider"
 import { Card, Button, Badge, Dropdown, Container } from 'react-bootstrap'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import Fuse from 'fuse.js'
 import "./Home.css"
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 
 export const HomeList = () => {
@@ -13,8 +18,21 @@ export const HomeList = () => {
     getHomes()
   }, [])
 
-  const history = useHistory()
+  let query = useQuery();
+  const searchTerm = query.get("search")
+  // 2. Set up the Fuse instance
+  const fuse = new Fuse(homes, {
+    includeScore: true,
+    keys: ['city', 'address', 'zipcode', 'aName', 'aEmail']
+  })
 
+  // 3. Now search!{keywords}
+  // if (searchTerm === "") {
+  //   const filtered_homes = homes
+  // } else {
+  //   const filtered_homes = fuse.search(`${searchTerm}`)
+  // }
+  const filtered_homes = fuse.search(`${searchTerm}`)
   return (
     <>
       <div className="page" >
@@ -38,20 +56,20 @@ export const HomeList = () => {
         <br />
         <section className="homes">
           {
-            homes.map(home => {
+            filtered_homes.map(home => {
               return (
                 <>
-                  <Card key={home.id} style={{ width: '18rem', margin: '0.3rem' }}>
-                    <Card.Img variant="top" src={home.imageUrl} />
+                  <Card key={home.item.id} style={{ width: '18rem', margin: '0.3rem' }}>
+                    <Card.Img variant="top" src={home.item.imageUrl} />
                     <Card.Body>
-                      <Card.Title href="#">{home.address1}</Card.Title>
-                      <Card.Subtitle className="mb-2 text-muted">${home.price}, {home.bed} beds, {home.bath} baths</Card.Subtitle>
-                      <Card.Subtitle className="mb-2 text-muted">{home.sqft} sqft, {home.land} Acers</Card.Subtitle>
+                      <Card.Title href="#">{home.item.address1}</Card.Title>
+                      <Card.Subtitle className="mb-2 text-muted">${home.item.price}, {home.item.bed} beds, {home.item.bath} baths</Card.Subtitle>
+                      <Card.Subtitle className="mb-2 text-muted">{home.item.sqft} sqft, {home.item.land} Acers</Card.Subtitle>
 
                       <Card.Text>
-                        {home.desc.substring(0, 90)}...
+                        {home.item.desc.substring(0, 90)}...
                       </Card.Text>
-                      <Link to={`/homes/detail/${home.id}`}> <Button variant="secondary" >See Details</Button></Link>
+                      <Link to={`/homes/detail/${home.item.id}`}> <Button variant="secondary" >See Details</Button></Link>
                     </Card.Body>
                   </Card>
 

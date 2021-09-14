@@ -15,6 +15,7 @@ export const SearchBar = () => {
         history.push(`/buy?search=${searchKey}`)
     }
 
+    
 
     return (
         <>
