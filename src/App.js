@@ -20,6 +20,12 @@ function App() {
               </>
             );
           } else {
+          //  return (
+          //     <>
+          //       <NavBar_main />
+          //       <ApplicationViews />
+          //     </>
+          //   );
             return <Redirect to="/login" />;
           }
         }}

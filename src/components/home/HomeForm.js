@@ -26,6 +26,7 @@ export const HomeForm = () => {
         if (homeId) {
             updateHome({
                 id: home.id,
+                popularity: home.price/home.bed,
                 userId: parseInt(sessionStorage.getItem("homebreeze_user")),
                 aName: home.aName,
                 aEmail: home.aEmail,
@@ -46,6 +47,7 @@ export const HomeForm = () => {
         } else {
             addHome({
                 userId: parseInt(sessionStorage.getItem("homebreeze_user")),
+                popularity: home.price/home.bed,
                 aName: home.aName,
                 aEmail: home.aEmail,
                 aPhone: home.aPhone,

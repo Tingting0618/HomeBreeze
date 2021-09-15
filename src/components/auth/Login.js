@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import {Form, Button,InputGroup,Navbar,Container,Card} from 'react-bootstrap'
 import { Link, useHistory } from "react-router-dom";
 import "./Login.css"
 
@@ -40,35 +41,63 @@ export const Login = () => {
     }
 
     return (
+        <>
+
         <main className="container--login">
             <dialog className="dialog dialog--auth" open={existDialog}>
                 <div>User does not exist</div>
                 <button className="button--close" onClick={e => setExistDialog(false)}>Close</button>
             </dialog>
-            <section>
-                <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Home Breeze</h1>
-                    <h2>Please sign in</h2>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
+
+                    
+            <Navbar bg="light" variant="light">
+                <Container>
+                    <Navbar.Brand href="/">HomeBreeze</Navbar.Brand>
+                </Container>
+            </Navbar>
+            <br />
+            <br />
+            <section >
+                <Form className="signin" onSubmit={handleLogin}>
+                    
+                    <Card.Title style={{textAlign:"center"}}>Sign In</Card.Title>
+                        <Form>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control id="email" 
+                                type="email" 
+                                placeholder="name@example.com"
+                                required autoFocus
+                                value={loginUser.email}
+                                onChange={handleInputChange} />
+                                <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                                </Form.Text>
+                            </Form.Group>
+                        </Form>
+                        {/* <label htmlFor="inputEmail"> Email address </label>
                         <input type="email"
                             id="email"
                             className="form-control"
                             placeholder="Email address"
                             required autoFocus
                             value={loginUser.email}
-                            onChange={handleInputChange} />
-                    </fieldset>
-                    <fieldset>
-                        <button type="submit">
-                            Sign in
-                        </button>
-                    </fieldset>
-                </form>
-            </section>
-            <section className="link--register">
-                <Link to="/register">Register for an account</Link>
+                            onChange={handleInputChange} /> */}
+                            <Button type="submit" variant="dark">
+                                Sign in
+                            </Button>
+                    
+                    <Form.Group >
+                        <br />
+                        <Form.Label style={{padding:"0em 1rem 0rem 0rem"}} >
+                            New to us?  
+                        </Form.Label>
+                        
+                        <Link to="/register" >Register Here</Link>
+                    </Form.Group>      
+                </Form>                
             </section>
         </main>
+        </>
     )
 }

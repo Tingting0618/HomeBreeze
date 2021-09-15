@@ -2,6 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { HomeProvider } from "./home/HomeProvider"
 import { MyHomeList } from "./home/MyHomeList"
+import { FeaturedList } from "./home/FeaturedList"
 import { HomeList } from "./home/HomeList"
 import { HomeForm } from "./home/HomeForm"
 import { HomeDetail } from "./home/HomeDetails"
@@ -13,7 +14,7 @@ export const ApplicationViews = () => {
             <HomeProvider>
                 <Route exact path="/">
                     <SearchBar />
-                    <HomeList />
+                    <FeaturedList />
                 </Route>
 
                 <Route path="/buy">
