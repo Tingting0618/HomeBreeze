@@ -1,4 +1,14 @@
 .dialog {
-    min-width: 15rem;
-    min-height: 5rem;
-  }
+  min-width: 15rem;
+  min-height: 5rem;
+}
+
+
+
+.signin{
+background-color: white;
+margin: auto;
+width: 50%;
+border: 1px solid Gainsboro;
+padding: 2.5rem;
+}

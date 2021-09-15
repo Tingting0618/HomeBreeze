@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { HomeContext } from "./HomeProvider"
-import { Card, Button, Badge, Dropdown, Container } from 'react-bootstrap'
+import { Card, Button, Badge, Dropdown, InputGroup, FormControl } from 'react-bootstrap'
 import { Link, useLocation } from 'react-router-dom'
 import Fuse from 'fuse.js'
 import "./Home.css"
@@ -18,14 +18,17 @@ export const HomeList = () => {
   let query = useQuery();
   //useEffect - reach out to the world for something
   useEffect(() => {
-    getHomes().then(() => {
+    getHomes()
+  }, [])
 
+  useEffect(() => {
       const searchTerm = query.get("search")
       const fuse = new Fuse(homes, {
         includeScore: true,
         keys: ['city', 'address1', 'zipcode', 'aName', 'aEmail']
       })
-      if (searchTerm === null | searchTerm === ""| searchTerm === " ") {
+      
+      if (searchTerm === null || searchTerm === "" || searchTerm === " ") {
         setHomesDisplay(homes)
       } else {
         const filtered_homes = fuse.search(`${searchTerm}`)
@@ -51,8 +54,7 @@ export const HomeList = () => {
         })
         setHomesDisplay(formated_homes)
       }
-    })
-  }, [])
+  }, [homes])
 
 
   const sortPrice = () => {
@@ -63,16 +65,20 @@ export const HomeList = () => {
     setHomesDisplay(homesSort)
   }
 
-  const sortDate = () => {
-    console.log(1)
+  const sortBeds = () => {
     const homesSort = [...homesDisplay]
-    homesSort.sort()
+    homesSort.sort(function (a, b) {
+      return b.bed - a.bed
+    })
+    setHomesDisplay(homesSort)
   }
 
   const sortPopularity = () => {
-    console.log(1)
     const homesSort = [...homesDisplay]
-    homesSort.sort()
+    homesSort.sort(function (a, b) {
+      return b.popularity - a.popularity
+    })
+    setHomesDisplay(homesSort)
   }
 
   return (
@@ -81,20 +87,59 @@ export const HomeList = () => {
         <h3>
           Our Exclusive Listings <Badge bg="success">New</Badge>
         </h3>
-        <div style={{ display: "flex" }}>
-          <Dropdown style={{ marginLeft: "auto" }}>
+        {/* style={{ marginLeft: "auto" }} */}
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <InputGroup >
+            <Dropdown >
+              <Dropdown.Toggle variant="grey" id="dropdown-basic">
+                Beds
+              </Dropdown.Toggle>
+              {/* onClick={filterBed1} */}
+              <Dropdown.Menu >
+                <Dropdown.Item >1+</Dropdown.Item>
+                <Dropdown.Item >2+</Dropdown.Item>
+                <Dropdown.Item >3+</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+
+            <Dropdown >
+              <Dropdown.Toggle variant="gery" id="dropdown-basic">
+                Lot Size
+              </Dropdown.Toggle>
+              {/* onClick={filterBed1} */}
+              <Dropdown.Menu >
+                <Dropdown.Item >0.5 Acers+</Dropdown.Item>
+                <Dropdown.Item >1 Acers+</Dropdown.Item>
+                <Dropdown.Item >2 Acers+</Dropdown.Item>
+                <Dropdown.Item >3 Acers+</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </InputGroup>
+
+
+          <InputGroup className="mb-3" style={{ width: "25%" }}>
+            <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
+            <FormControl
+              placeholder="Max Price"
+              aria-label="Min Price"
+              aria-describedby="basic-addon1"
+            />
+          </InputGroup>
+
+          <Dropdown >
             <Dropdown.Toggle variant="dark" id="dropdown-basic">
               Sort By
             </Dropdown.Toggle>
 
             <Dropdown.Menu >
               <Dropdown.Item onClick={sortPrice} >Price</Dropdown.Item>
-              <Dropdown.Item onClick={sortDate}>Listing Date</Dropdown.Item>
+              <Dropdown.Item onClick={sortBeds}>Bedrooms</Dropdown.Item>
               <Dropdown.Item onClick={sortPopularity}>Popularity</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 
         </div>
+
         <br />
         <section className="homes">
           {
