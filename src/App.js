@@ -2,15 +2,13 @@ import './App.css';
 import React from "react"
 import { NavBar_main } from "./components/nav/NavBar"
 import { ApplicationViews } from "./components/ApplicationView"
-import { Login } from "./components/auth/Login";
-import { Register } from "./components/auth/Register";
 import { Route, Redirect } from "react-router-dom";
 
 
 function App() {
   return (
     <>
-      <Route
+      {/* <Route
         render={() => {
           if (sessionStorage.getItem("homebreeze_user")) {
             return (
@@ -28,15 +26,20 @@ function App() {
           //   );
             return <Redirect to="/login" />;
           }
+        }} */}
+      <Route
+        render={() => {
+
+          return (
+            <>
+              
+              <ApplicationViews />
+            </>
+          );
+
         }}
       />
 
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/register">
-        <Register />
-      </Route>
     </>
   );
 }

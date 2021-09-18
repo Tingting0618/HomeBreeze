@@ -14,6 +14,8 @@ export const HomeList = () => {
   // This state changes when `getHomes()` is invoked below
   const { homes, getHomes } = useContext(HomeContext)
   const [homesDisplay, setHomesDisplay] = useState([])
+  const [selectedBed, setSelectedBed] = useState("")
+  const [selectedLand, setSelectedLand] = useState("")
 
   let query = useQuery();
   //useEffect - reach out to the world for something
@@ -22,38 +24,38 @@ export const HomeList = () => {
   }, [])
 
   useEffect(() => {
-      const searchTerm = query.get("search")
-      const fuse = new Fuse(homes, {
-        includeScore: true,
-        keys: ['city', 'address1', 'zipcode', 'aName', 'aEmail']
+    const searchTerm = query.get("search")
+    const fuse = new Fuse(homes, {
+      includeScore: true,
+      keys: ['city', 'address1', 'zipcode', 'aName', 'aEmail']
+    })
+
+    if (searchTerm === null || searchTerm === "" || searchTerm === " ") {
+      setHomesDisplay(homes)
+    } else {
+      const filtered_homes = fuse.search(`${searchTerm}`)
+      const formated_homes = filtered_homes.map(home => {
+        return {
+          id: home.item.id,
+          userId: home.item.userId,
+          aName: home.item.aName,
+          aEmail: home.item.aEmail,
+          aPhone: home.item.aPhone,
+          price: home.item.price,
+          bed: home.item.bed,
+          sqft: home.item.sqft,
+          sqft: home.item.sqft,
+          land: home.item.land,
+          address1: home.item.address1,
+          city: home.item.city,
+          state: home.item.state,
+          zipcode: home.item.zipcode,
+          desc: home.item.desc,
+          imageUrl: home.item.imageUrl,
+        }
       })
-      
-      if (searchTerm === null || searchTerm === "" || searchTerm === " ") {
-        setHomesDisplay(homes)
-      } else {
-        const filtered_homes = fuse.search(`${searchTerm}`)
-        const formated_homes = filtered_homes.map(home => {
-          return {
-            id: home.item.id,
-            userId: home.item.userId,
-            aName: home.item.aName,
-            aEmail: home.item.aEmail,
-            aPhone: home.item.aPhone,
-            price: home.item.price,
-            bed: home.item.bed,
-            sqft: home.item.sqft,
-            sqft: home.item.sqft,
-            land: home.item.land,
-            address1: home.item.address1,
-            city: home.item.city,
-            state: home.item.state,
-            zipcode: home.item.zipcode,
-            desc: home.item.desc,
-            imageUrl: home.item.imageUrl,
-          }
-        })
-        setHomesDisplay(formated_homes)
-      }
+      setHomesDisplay(formated_homes)
+    }
   }, [homes])
 
 
@@ -81,50 +83,122 @@ export const HomeList = () => {
     setHomesDisplay(homesSort)
   }
 
+
+  const filterBed2 = () => {
+    const homesFilter = [...homesDisplay]
+    const homesFilterResults = homesFilter.filter(home => home.bed >= 2)
+    setHomesDisplay(homesFilterResults)
+    const selectedBed = "2+"
+    setSelectedBed(selectedBed)
+  }
+  const filterBed3 = () => {
+    const homesFilter = [...homesDisplay]
+    const homesFilterResults = homesFilter.filter(home => home.bed >= 3)
+    setHomesDisplay(homesFilterResults)
+    const selectedBed = "3+"
+    setSelectedBed(selectedBed)
+  }
+  const filterBed4 = () => {
+    const homesFilter = [...homesDisplay]
+    const homesFilterResults = homesFilter.filter(home => home.bed >= 4)
+    setHomesDisplay(homesFilterResults)
+    const selectedBed = "4+"
+    setSelectedBed(selectedBed)
+  }
+
+  const filterLot05 = () => {
+    const homesFilter = [...homesDisplay]
+    const homesFilterResults = homesFilter.filter(home => home.land >= 0.5)
+    setHomesDisplay(homesFilterResults)
+    const selectedLand = "0.5+"
+    setSelectedLand(selectedLand)
+  }
+  const filterLot1 = () => {
+    const homesFilter = [...homesDisplay]
+    const homesFilterResults = homesFilter.filter(home => home.land >= 1)
+    setHomesDisplay(homesFilterResults)
+    const selectedLand = "1+"
+    setSelectedLand(selectedLand)
+  }
+  const filterLot2 = () => {
+    const homesFilter = [...homesDisplay]
+    const homesFilterResults = homesFilter.filter(home => home.land >= 2)
+    setHomesDisplay(homesFilterResults)
+    const selectedLand = "2+"
+    setSelectedLand(selectedLand)
+  }
+
+  const [searchPrice, setsearchPrice] = useState(990000000)
+  const handleSearchPriceInputChange = (event) => {
+    setsearchPrice(event.target.value)
+  }
+  const filterPrice = () => {
+    const homesFilter = [...homesDisplay]
+    const homesFilterResults = homesFilter.filter(home => parseInt(home.price) <= parseInt(searchPrice))
+    setHomesDisplay(homesFilterResults)
+  }
+
+  const rerender = () => {
+    window.location.href = '/buy'
+  }
+
+
   return (
     <>
       <div className="page" >
         <h3>
-          Our Exclusive Listings <Badge bg="success">New</Badge>
+        Our Exclusive Listings <Badge bg="success">New</Badge> 
         </h3>
+        <br/>
         {/* style={{ marginLeft: "auto" }} */}
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <InputGroup >
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          {/* <InputGroup > */}
+          <div style={{ display: "flex", justifyContent: "flex-start" }}>
             <Dropdown >
               <Dropdown.Toggle variant="grey" id="dropdown-basic">
+              {selectedBed ? selectedBed : ""}
                 Beds
               </Dropdown.Toggle>
-              {/* onClick={filterBed1} */}
+
               <Dropdown.Menu >
-                <Dropdown.Item >1+</Dropdown.Item>
-                <Dropdown.Item >2+</Dropdown.Item>
-                <Dropdown.Item >3+</Dropdown.Item>
+                <Dropdown.Item onClick={filterBed2}>2+</Dropdown.Item>
+                <Dropdown.Item onClick={filterBed3}>3+</Dropdown.Item>
+                <Dropdown.Item onClick={filterBed4}>4+</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
 
             <Dropdown >
               <Dropdown.Toggle variant="gery" id="dropdown-basic">
+              {selectedLand ? selectedLand : ""}
                 Lot Size
               </Dropdown.Toggle>
               {/* onClick={filterBed1} */}
               <Dropdown.Menu >
-                <Dropdown.Item >0.5 Acers+</Dropdown.Item>
-                <Dropdown.Item >1 Acers+</Dropdown.Item>
-                <Dropdown.Item >2 Acers+</Dropdown.Item>
-                <Dropdown.Item >3 Acers+</Dropdown.Item>
+                <Dropdown.Item onClick={filterLot05}>0.5 Acers+</Dropdown.Item>
+                <Dropdown.Item onClick={filterLot1}>1 Acers+</Dropdown.Item>
+                <Dropdown.Item onClick={filterLot2}>2 Acers+</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-          </InputGroup>
+
+            {/* <InputGroup className="mb-3" style={{ width: "50%" }}> */}
+            <InputGroup style={{ width: "35%",margin: "0.2rem" }}>
+              <InputGroup.Text id="basic-addon1" >$</InputGroup.Text>
+              <FormControl
+                placeholder="Max Price"
+                aria-label="Max Price"
+                aria-describedby="basic-addon1"
+                onChange={handleSearchPriceInputChange}
+              />
+              <Button onClick={filterPrice} variant="secondary">Apply</Button>
+            </InputGroup>
+
+            <Button onClick={rerender} 
+            variant="dark" 
+            style={{  margin: "0.2rem" }}>Clear All Filters</Button>
+          {/* </InputGroup> */}
+          </div>
 
 
-          <InputGroup className="mb-3" style={{ width: "25%" }}>
-            <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
-            <FormControl
-              placeholder="Max Price"
-              aria-label="Min Price"
-              aria-describedby="basic-addon1"
-            />
-          </InputGroup>
 
           <Dropdown >
             <Dropdown.Toggle variant="dark" id="dropdown-basic">

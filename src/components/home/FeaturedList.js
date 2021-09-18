@@ -13,17 +13,24 @@ export const FeaturedList = () => {
     getHomes()
   }, [])
 
+
+    const homesSort = [...homes]
+    const sortByPopularity= homesSort.sort(function (a, b) {
+      return b.popularity - a.popularity
+    })
+    const topTen = sortByPopularity.slice(0,3);
+
   return (
     <>
       <div className="page" >
         <h3>
-          Our Exclusive Listings <Badge bg="success">New</Badge>
+          Our Exclusive Listings <Badge bg="dark">Featured</Badge>
         </h3>
 
         <br />
         <section className="homes">
           {
-            homes.map(home => {
+            topTen.map(home => {
               return (
                 <>
                   <Card key={home.id} style={{ width: '18rem', margin: '0.3rem' }}>

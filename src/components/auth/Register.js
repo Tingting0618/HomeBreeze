@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom";
+import { Container, Button, Form, Card } from 'react-bootstrap'
+
 
 import "./Login.css"
 
@@ -57,31 +59,55 @@ export const Register = () => {
     }
 
     return (
-        <main style={{ textAlign: "center" }}>
+        <>
 
-            <dialog className="dialog dialog--password" open={conflictDialog}>
-                <div>Account with that email address already exists</div>
-                <button className="button--close" onClick={e => setConflictDialog(false)}>Close</button>
-            </dialog>
 
-            <form className="form--login" onSubmit={handleRegister}>
-                <h5 className="h3 mb-3 font-weight-normal">Please Register for Application Name</h5>
-                <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
-                    <input type="text" name="firstName" id="firstName" className="form-control" placeholder="First name" required autoFocus value={registerUser.firstName} onChange={handleInputChange} />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
-                    <input type="text" name="lastName" id="lastName" className="form-control" placeholder="Last name" required value={registerUser.lastName} onChange={handleInputChange} />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="inputEmail"> Email address </label>
-                    <input type="email" name="email" id="email" className="form-control" placeholder="Email address" required value={registerUser.email} onChange={handleInputChange} />
-                </fieldset>
-                <fieldset>
-                    <button type="submit"> Sign in </button>
-                </fieldset>
-            </form>
-        </main>
+            <Container>
+
+                <dialog className="dialog dialog--password" open={conflictDialog}>
+                    <div>Account with that email address already exists</div>
+                    <button className="button--close" onClick={e => setConflictDialog(false)}>Close</button>
+                </dialog>
+
+
+                <main style={{ textAlign: "center", display: "flex" }} className="justify-content-md-center">
+
+                    <Form onSubmit={handleRegister}>
+                        <br/>
+                        <br/>
+                        <br/>
+                      
+                        <Card.Title style={{ textAlign: "center" }}>Please Register for HomeBreeze</Card.Title>
+                        <br />
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control type="text" name="firstName" id="firstName" className="form-control" placeholder="First name" required autoFocus value={registerUser.firstName} onChange={handleInputChange} />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Control type="text" name="lastName" id="lastName" className="form-control" placeholder="Last name" required value={registerUser.lastName} onChange={handleInputChange} />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" name="email" id="email" className="form-control" placeholder="Email address" required value={registerUser.email} onChange={handleInputChange} />
+                            <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                            </Form.Text>
+                        </Form.Group>
+
+
+                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="Agree terms and conditions" />
+                        </Form.Group>
+
+                        <Button variant="primary" type="submit">
+                            Submit
+                        </Button>
+                    </Form>
+                </main>
+
+            </Container>
+        </>
     )
 }
