@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { HomeContext } from "./HomeProvider"
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, Alert } from 'react-bootstrap'
 import { useHistory, Link } from 'react-router-dom'
+
 import "./Home.css"
 
 export const MyHomeList = () => {
@@ -17,22 +18,37 @@ export const MyHomeList = () => {
     const currentUserId = parseInt(sessionStorage.getItem("homebreeze_user"))
     const currentUserEmail = sessionStorage.getItem("homebreeze_user_email")
     const myhomes = homes.filter(home => currentUserId == home.userId || currentUserEmail == home.aEmail)
+    const isLoggedIn = sessionStorage.getItem('homebreeze_user') ? true : false
 
-    return (
-        <>
-            <div class="row">
-                <div class="col">
-                </div>
-                <div class="col-auto">
-                    <button class="btn btn-dark pull-right"
-                        style={{ margin: '0.8rem 3rem -0.8rem 0rem' ,fontWeight: "bold"}}
-                        onClick={
-                            () => history.push("/homes/create")}
-                    > Sell New Homes</button>
-                </div>
-            </div>
+    const login = () => {
+        window.location.href = '/login';
+    }
 
-            <div className="page" >
+    const loginButton = (
+        <div style={{ margin: "8rem", display: "flex", justifyContent: "center" }}>
+            <Button className="navbar__link"
+                variant="primary"
+                onClick={login}>Please log in to see your listings
+            </Button>
+        </div>
+    )
+
+    let myHomeHtml
+    if (myhomes.length > 0) {
+        myHomeHtml = (
+            <>
+                <div class="row">
+                    <div class="col">
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-dark pull-right"
+                            style={{ margin: '0.8rem 3rem -0.8rem 0rem', fontWeight: "bold" }}
+                            onClick={
+                                () => history.push("/homes/create")}
+                        > Sell New Homes</button>
+                    </div>
+                </div>
+
                 <section className="homes">
                     {
                         myhomes.map(home => {
@@ -60,12 +76,41 @@ export const MyHomeList = () => {
 
                                     </Card.Body>
                                 </Card>
+
                             )
                         })
                     }
                 </section>
-            </div>
+            </>)
 
+    } else {
+        myHomeHtml = (
+            <>
+                <div class="row">
+                    <div class="col">
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-dark pull-right"
+                            style={{ margin: '0.8rem 3rem -0.8rem 0rem', fontWeight: "bold" }}
+                            onClick={
+                                () => history.push("/homes/create")}
+                        > Sell New Homes</button>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <Alert variant="warning" style={{ width: "50%", display: "flex", justifyContent: "center" }}>
+                        Ooops, you have no listings. 
+                    </Alert> 
+                </div>
+            </>)
+    }
+
+    return (
+        <>
+            {isLoggedIn ? myHomeHtml : loginButton}
         </>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import {Form, Button,InputGroup,Navbar,Container,Card} from 'react-bootstrap'
+import { Form, Button, InputGroup, Navbar, Container, Card } from 'react-bootstrap'
 import { Link, useHistory } from "react-router-dom";
 import "./Login.css"
 
@@ -43,35 +43,37 @@ export const Login = () => {
     return (
         <>
 
-        <main className="container--login">
-            <dialog className="dialog dialog--auth" open={existDialog}>
-                <div>User does not exist</div>
-                <button className="button--close" onClick={e => setExistDialog(false)}>Close</button>
-            </dialog>
+            <main className="container--login">
+                <Navbar bg="light" variant="light">
+                    <Container>
+                        <Navbar.Brand href="/">HomeBreeze</Navbar.Brand>
+                    </Container>
+                </Navbar>
+                
+                <dialog className="dialog dialog--auth" open={existDialog}>
+                    <div>User does not exist</div>
+                    <button className="button--close" onClick={e => setExistDialog(false)}>Close</button>
+                </dialog>
 
-                    
-            <Navbar bg="light" variant="light">
-                <Container>
-                    <Navbar.Brand href="/">HomeBreeze</Navbar.Brand>
-                </Container>
-            </Navbar>
-            <br />
-            <br />
-            <section >
-                <Form className="signin" onSubmit={handleLogin}>
-                    
-                    <Card.Title style={{textAlign:"center"}}>Sign In</Card.Title>
+
+
+                <br />
+                <br />
+                <section >
+                    <Form className="signin" onSubmit={handleLogin}>
+
+                        <Card.Title style={{ textAlign: "center" }}>Sign In</Card.Title>
                         <Form>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control id="email" 
-                                type="email" 
-                                placeholder="name@example.com"
-                                required autoFocus
-                                value={loginUser.email}
-                                onChange={handleInputChange} />
+                                <Form.Control id="email"
+                                    type="email"
+                                    placeholder="name@example.com"
+                                    required autoFocus
+                                    value={loginUser.email}
+                                    onChange={handleInputChange} />
                                 <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
+                                    We'll never share your email with anyone else.
                                 </Form.Text>
                             </Form.Group>
                         </Form>
@@ -83,21 +85,22 @@ export const Login = () => {
                             required autoFocus
                             value={loginUser.email}
                             onChange={handleInputChange} /> */}
-                            <Button type="submit" variant="dark">
-                                Sign in
-                            </Button>
-                    
-                    <Form.Group >
-                        <br />
-                        <Form.Label style={{padding:"0em 1rem 0rem 0rem"}} >
-                            New to us?  
-                        </Form.Label>
-                        
-                        <Link to="/register" >Register Here</Link>
-                    </Form.Group>      
-                </Form>                
-            </section>
-        </main>
+                        <Button type="submit" variant="dark">
+                            Sign in
+                        </Button>
+
+                        <Form.Group >
+                            <br />
+                            <Form.Label style={{ padding: "0em 1rem 0rem 0rem" }} >
+                                New to us?
+                            </Form.Label>
+
+                            <Link to="/register" >Register Here</Link>
+                        </Form.Group>
+                    </Form>
+                </section>
+            </main>
+
         </>
     )
 }

@@ -1,34 +1,18 @@
 import React from "react"
 import { Button, Navbar, Container, Nav } from 'react-bootstrap'
-import { Route, Redirect } from "react-router-dom";
-import { Login } from "../auth/Login";
-import { Register } from "../auth/Register";
+
 
 
 export const NavBar_main = (props) => {
-    const  logout = () => {
+    const logout = () => {
         sessionStorage.clear();
         window.location.href = '/';
-      }
+    }
 
-    const  login = () => {
-        return (
-            <>
-            <Route
-                render={() => {
-                    return <Redirect to="/login" />;
-                }}
-            />
-            <Route path="/login">
-                <Login />
-            </Route>
-            <Route path="/register">
-                <Register />
-            </Route>
-            </>
-        );
-      }
-    
+    const login = () => {
+        window.location.href = '/login';
+    }
+    const isLoggedIn = sessionStorage.getItem('homebreeze_user') ? true : false
     return (
         <>
             <Navbar bg="light" variant="light">
@@ -40,8 +24,7 @@ export const NavBar_main = (props) => {
                         {/* <Nav.Link href="/rent">Rent</Nav.Link>
                         <Nav.Link href="/service">Service</Nav.Link> */}
                         <Nav.Link href="/mylistings">My Listings</Nav.Link>
-                        <Button className="navbar__link" variant="light" onClick={login}>Log In</Button>
-                        <Button className="navbar__link" variant="light" onClick={logout}>Log Out</Button>
+                        {isLoggedIn ? <Button className="navbar__link" variant="light" onClick={logout}>Log Out</Button> : <Button className="navbar__link" variant="light" onClick={login}>Log In</Button>}
                     </Nav>
                 </Container>
             </Navbar>
