@@ -27,7 +27,7 @@ export const MyHomeList = () => {
     const loginButton = (
         <div style={{ margin: "8rem", display: "flex", justifyContent: "center" }}>
             <Button className="navbar__link"
-                variant="primary"
+                variant="dark"
                 onClick={login}>Please log in to see your listings
             </Button>
         </div>
@@ -48,7 +48,7 @@ export const MyHomeList = () => {
                         > Sell New Homes</button>
                     </div>
                 </div>
-
+                <br/>
                 <section className="homes">
                     {
                         myhomes.map(home => {
@@ -65,7 +65,7 @@ export const MyHomeList = () => {
                                         <Card.Title href="#">{home.address1}</Card.Title>
                                         <Card.Subtitle className="mb-2 text-muted">Listed by: {home.user.name}</Card.Subtitle>
                                         <Card.Text>
-                                            {home.desc.substring(0, 90)}...
+                                            {home.desc.substring(0, 60)}...
                                         </Card.Text>
                                         <Link to={`/homes/detail/${home.id}`}> <Button variant="secondary" >See Details</Button></Link>
                                         <Button variant="secondary"

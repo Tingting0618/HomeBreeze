@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom";
-import { Container, Button, Form, Card } from 'react-bootstrap'
+import { Container, Button, Form, Card, Navbar } from 'react-bootstrap'
 
 
 import "./Login.css"
@@ -60,9 +60,15 @@ export const Register = () => {
 
     return (
         <>
-
+            <Navbar bg="light" variant="light">
+                <Container>
+                    <Navbar.Brand href="/">HomeBreeze</Navbar.Brand>
+                </Container>
+            </Navbar>
 
             <Container>
+
+
 
                 <dialog className="dialog dialog--password" open={conflictDialog}>
                     <div>Account with that email address already exists</div>
@@ -73,10 +79,9 @@ export const Register = () => {
                 <main style={{ textAlign: "center", display: "flex" }} className="justify-content-md-center">
 
                     <Form onSubmit={handleRegister}>
-                        <br/>
-                        <br/>
-                        <br/>
-                      
+                        <br />
+
+
                         <Card.Title style={{ textAlign: "center" }}>Please Register for HomeBreeze</Card.Title>
                         <br />
                         <Form.Group className="mb-3" controlId="formBasicPassword">

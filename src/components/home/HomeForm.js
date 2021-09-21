@@ -212,8 +212,8 @@ export const HomeForm = () => {
     const loginButton = (
         <div style={{margin: "8rem", display: "flex", justifyContent: "center"}}>
         <Button className="navbar__link"
-            variant="primary"
-            onClick={login}>Please log in to list your home
+            variant="dark"
+            onClick={login}>Please log in to list your homes
         </Button>
         </div>
     )
