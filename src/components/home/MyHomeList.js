@@ -14,6 +14,7 @@ export const MyHomeList = () => {
         getHomes()
     }, [])
 
+
     const history = useHistory()
     const currentUserId = parseInt(sessionStorage.getItem("homebreeze_user"))
     const currentUserEmail = sessionStorage.getItem("homebreeze_user_email")
@@ -48,7 +49,7 @@ export const MyHomeList = () => {
                         > Sell New Homes</button>
                     </div>
                 </div>
-                <br/>
+                <br />
                 <section className="homes">
                     {
                         myhomes.map(home => {
@@ -97,13 +98,13 @@ export const MyHomeList = () => {
                         > Sell New Homes</button>
                     </div>
                 </div>
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     <Alert variant="warning" style={{ width: "50%", display: "flex", justifyContent: "center" }}>
-                        Ooops, you have no listings. 
-                    </Alert> 
+                        Ooops, you have no listings.
+                    </Alert>
                 </div>
             </>)
     }

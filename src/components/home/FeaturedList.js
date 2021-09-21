@@ -37,8 +37,8 @@ export const FeaturedList = () => {
                     <Card.Img variant="top" src={home.imageUrl} />
                     <Card.Body>
                       <Card.Title href="#">{home.address1}</Card.Title>
-                      <Card.Subtitle className="mb-2 text-muted">${home.price}, {home.bed} beds, {home.bath} baths</Card.Subtitle>
-                      <Card.Subtitle className="mb-2 text-muted">{home.sqft} sqft, {home.land} Acers</Card.Subtitle>
+                      <Card.Subtitle className="mb-2 text-muted">${Intl.NumberFormat().format(home.price)} {home.bed} beds, {home.bath} baths</Card.Subtitle>
+                      <Card.Subtitle className="mb-2 text-muted">{Intl.NumberFormat().format(home.sqft)} sqft, {home.land} Acers</Card.Subtitle>
 
                       <Card.Text>
                         {home.desc.substring(0, 60)}...
