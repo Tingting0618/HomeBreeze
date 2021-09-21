@@ -228,7 +228,7 @@ export const HomeList = () => {
                       <Card.Subtitle className="mb-2 text-muted">{home.sqft} sqft, {home.land} Acers</Card.Subtitle>
 
                       <Card.Text>
-                        {home.desc.substring(0, 90)}...
+                        {home.desc.substring(0, 60)}...
                       </Card.Text>
                       <Link to={`/homes/detail/${home.id}`}> <Button variant="secondary" >See Details</Button></Link>
                     </Card.Body>
