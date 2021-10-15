@@ -5,7 +5,7 @@ This project is to design, build and deliver an interactive experience connectin
 
 Project goals: 
   - Develop a fuzzy search engine to match user search keywords
-  - Develop a reusable MVP template for a marketplace web application with React
+  - Develop a reusable MVP template for a marketplace web application using React
   - Clean and user-friendly design
 
 ### Landing Page
