@@ -1,4 +1,4 @@
-# Home Breeze
+# Home Breeze (Zillow & Compass.com Clone)
 
 This project is to build a web application that helps people to find their next home.
 
