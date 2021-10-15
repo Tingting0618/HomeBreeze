@@ -23,3 +23,7 @@ Project goals:
 ### Listing Page
 
 <img width="1019" alt="Screen Shot 2021-10-15 at 8 07 15 AM" src="https://user-images.githubusercontent.com/44503223/137491724-6a027704-873e-4a54-9c35-2f7655246081.png">
+
+## Learn More
+
+For more information, please check out the [Project Portfolio](https://tingting0618.github.io).
