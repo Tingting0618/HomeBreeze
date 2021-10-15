@@ -10,7 +10,8 @@ Project goals:
 
 ### Landing Page
 
-<img width="1063" alt="Screen Shot 2021-10-15 at 7 46 25 AM" src="https://user-images.githubusercontent.com/44503223/137489252-337f62f4-a75f-49c4-a64a-09c9f1b347bc.png">
+<img width="1201" alt="Screen Shot 2021-10-15 at 7 58 12 AM" src="https://user-images.githubusercontent.com/44503223/137490558-e17f25ae-f782-4485-9195-d747d8458769.png">
+
 
 ### Sign In Page
 
