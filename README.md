@@ -1,11 +1,12 @@
 # Home Breeze (Zillow/Compass Clone)
-#### Front End Web Application [React, React-Bootstrap, CSS]
+### Front End Web Application [React, React-Bootstrap, CSS]
 
 This project is to design, build and deliver an interactive experience connecting potential home buyers and sellers.
 
-- Features: 
-  - Implemented a fuzzy search engine to match user search keywords
-  - Developed a reusable MVP template for a marketplace web application with React
+Project goals: 
+  - Develop a fuzzy search engine to match user search keywords
+  - Develop a reusable MVP template for a marketplace web application with React
+  - Clean and user-friendly design
 
 ### Landing Page
 
