@@ -18,7 +18,8 @@ Project goals:
 
 ### Register Page
 
+<img width="1018" alt="Screen Shot 2021-10-15 at 8 02 18 AM" src="https://user-images.githubusercontent.com/44503223/137491092-ad813e27-2800-4f0b-b9ed-57c60a093eac.png">
 
 ### Listing Page
 
-<img width="1064" alt="Screen Shot 2021-10-15 at 7 47 12 AM" src="https://user-images.githubusercontent.com/44503223/137489281-629658d7-8da0-445b-8f10-d9b3e5f5d114.png">
+<img width="1019" alt="Screen Shot 2021-10-15 at 8 07 15 AM" src="https://user-images.githubusercontent.com/44503223/137491724-6a027704-873e-4a54-9c35-2f7655246081.png">
