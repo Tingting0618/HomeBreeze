@@ -10,6 +10,8 @@ import { SearchBar } from './nav/SearchBar'
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import {NavBar_main} from "./nav/NavBar"
+import {Footer} from "./nav/Footer"
+
 
 export const ApplicationViews = () => {
     return (
@@ -19,6 +21,7 @@ export const ApplicationViews = () => {
                     <NavBar_main />
                     <SearchBar />
                     <FeaturedList />
+                    <Footer />
                 </Route>
 
                 <Route path="/buy">
